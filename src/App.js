@@ -3,13 +3,15 @@ import './App.css';
 import Note from './components/Note';
 import { Switch, Route } from 'react-router-dom';
 import NoteContainer from './components/NoteContainer';
+import Login from './components/Login';
 
 function App() {
   return (
     <div className="App">
         <Switch>
-          {/* <Route path='/note-details' component={Note} /> */}
-          <Route path='/' component={NoteContainer} />
+          {/* <Login /> */}
+          <Route exact path='/' component={Login} />
+          <Route exact path='/dashboard' component={NoteContainer} />
         </Switch>
     </div>
   );

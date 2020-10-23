@@ -59,7 +59,7 @@ class Note extends React.Component {
     }
 
     handleDelete = (id, event) => {
-       fetch(`http://localhost:3001/notes/${id}`, { method : 'DELETE'})
+       fetch(`http://localhost:3001/api/v1/notes/${id}`, { method : 'DELETE'})
        .then(resp => resp.json())
        .then(note => {
         this.props.deleteNote(id)
@@ -74,10 +74,14 @@ class Note extends React.Component {
             },
             body: JSON.stringify(this.state)
         }
-        fetch(`http://localhost:3001/notes/${this.props.id}`, reqObj)
+        fetch(`http://localhost:3001/api/v1/notes/${this.props.id}`, reqObj)
         .then(resp => resp.json())
         .then(note => {
             this.props.updateNotes(note)
+        })
+        this.setState({
+            title: this.props.title,
+            content: this.props.content
         })
     }
 
@@ -89,7 +93,7 @@ class Note extends React.Component {
                     <textarea type='text' name='title' placeholder={this.props.title} onChange={this.handleChange}/>
                     <div className='header-bottom'>
                             <div className='user'>
-                                {this.props.user.username}
+                                <div className='username'>{this.props.user.username}</div>
                             </div>
                         <div className='buttons'>
                         <img src={deleteButton} className='delete-button' onClick={(event) => this.deleteAnimation(this.props.id, event)} />

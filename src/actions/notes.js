@@ -25,3 +25,10 @@ export const createNote = (note) => {
         note: note
     }
 }
+
+// export const filterNotes = (user) => {
+//     return {
+//         type: 'FILTER_NOTES',
+//         user: user
+//     }
+// }
